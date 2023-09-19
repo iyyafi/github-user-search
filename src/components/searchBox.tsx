@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 
 export default function SearchBox() {
     const [searchText, setSearchText] = useState('')
-    const [, setSearchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams()
 
     function onClickSearch(text: string): void {
         setSearchParams({ q: text })
@@ -13,11 +13,13 @@ export default function SearchBox() {
         <div>
             <input
                 type="text"
+                defaultValue={searchParams.get('q') || ''}
                 onChange={(e) => setSearchText(e.target.value)}
+                onKeyDown={(e) =>
+                    e.key === 'Enter' && onClickSearch(searchText)
+                }
             />
-            <button onClick={() => onClickSearch(searchText)}>
-                Search {searchText}
-            </button>
+            <button onClick={() => onClickSearch(searchText)}>Search</button>
         </div>
     )
 }
