@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useSearchParams } from 'react-router-dom'
 
 import { UserItem } from '../types/searchResult'
+import UserRepos from './userRepos'
 
 export default function SearchResults() {
     const [searchParams] = useSearchParams()
@@ -12,7 +13,7 @@ export default function SearchResults() {
         isError,
         isFetching,
     } = useQuery({
-        queryKey: ['users'],
+        queryKey: ['users', searchParams.get('q')],
         queryFn: () =>
             axios
                 .get(
@@ -24,12 +25,14 @@ export default function SearchResults() {
         enabled: !!searchParams.get('q'),
     })
 
-    if (isError) return <>Error Load Data</>
-    if (isFetching) return <>Loading Data</>
+    if (isError) return <>Error Load User Data</>
+    if (isFetching) return <>Loading User Data</>
 
     return users.items?.length
         ? users.items?.map((user: UserItem) => (
-              <div key={user.id}>{user.login}</div>
+              <div key={user.id}>
+                  <UserRepos label={user.login} />
+              </div>
           ))
         : null
 }
