@@ -19,7 +19,12 @@ export default function SearchResults() {
                 .get(
                     `https://api.github.com/search/users?q=${searchParams.get(
                         'q'
-                    )}&per_page=5`
+                    )}&per_page=5`,
+                    {
+                        headers: {
+                            Authorization: import.meta.env.VITE_GITHUB_TOKEN,
+                        },
+                    }
                 )
                 .then((res) => res.data),
         enabled: !!searchParams.get('q'),

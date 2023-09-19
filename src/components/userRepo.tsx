@@ -12,7 +12,11 @@ export default function UserRepo({ username }: { username: string }) {
         queryKey: ['repo', username],
         queryFn: () =>
             axios
-                .get(`https://api.github.com/users/${username}/repos`)
+                .get(`https://api.github.com/users/${username}/repos`, {
+                    headers: {
+                        Authorization: import.meta.env.VITE_GITHUB_TOKEN,
+                    },
+                })
                 .then((res) => res.data),
     })
 
