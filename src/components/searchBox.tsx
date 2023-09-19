@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-export default function Search() {
+export default function SearchBox() {
     const [searchText, setSearchText] = useState('')
     const [, setSearchParams] = useSearchParams()
 
