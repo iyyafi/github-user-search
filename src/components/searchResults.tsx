@@ -4,6 +4,8 @@ import { useSearchParams } from 'react-router-dom'
 
 import { UserItem } from '../types/searchResult'
 import UserRepos from './userRepos'
+import LoadingState from './loadingState'
+import ErrorState from './errorState'
 
 export default function SearchResults() {
     const [searchParams] = useSearchParams()
@@ -30,14 +32,18 @@ export default function SearchResults() {
         enabled: !!searchParams.get('q'),
     })
 
-    if (isError) return <>Error Load User Data</>
-    if (isFetching) return <>Loading User Data</>
+    if (isError) return <ErrorState label="Error Fetch User Data" />
+    if (isFetching) return <LoadingState label="Loading User Data" />
 
-    return users.items?.length
-        ? users.items?.map((user: UserItem) => (
-              <div key={user.id}>
-                  <UserRepos label={user.login} />
-              </div>
-          ))
-        : null
+    return users.items?.length ? (
+        <div className="p-3">
+            <div className="rounded-lg border border-gray-300 overflow-hidden">
+                {users.items?.map((user: UserItem) => (
+                    <div key={user.id} className="border-b last:border-0">
+                        <UserRepos label={user.login} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    ) : null
 }

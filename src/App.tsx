@@ -1,10 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
 import SearchBox from './components/searchBox'
 import SearchResults from './components/searchResults'
+import SearchResultInfo from './components/searchResultInfo'
 
 // Create a client
 const queryClient = new QueryClient({
@@ -19,26 +18,13 @@ function App() {
     return (
         // Provide the client to your App
         <QueryClientProvider client={queryClient}>
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
-                    />
-                </a>
+            <div className="flex min-h-screen w-full justify-center bg-slate-100 py-10">
+                <div className="bg-white max-w-lg w-full rounded-lg border border-gray-300">
+                    <SearchBox />
+                    <SearchResultInfo />
+                    <SearchResults />
+                </div>
             </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <SearchBox />
-            </div>
-            <SearchResults />
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
             <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
     )
