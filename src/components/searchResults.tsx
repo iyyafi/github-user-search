@@ -37,9 +37,12 @@ export default function SearchResults() {
 
     return users.items?.length ? (
         <div className="p-3">
-            <div className="rounded-lg border border-gray-300 overflow-hidden">
+            <div className="rounded-lg border border-gray-300 dark:border-gray-700 overflow-hidden">
                 {users.items?.map((user: UserItem) => (
-                    <div key={user.id} className="border-b last:border-0">
+                    <div
+                        key={user.id}
+                        className="border-b last:border-0 dark:border-b-slate-700"
+                    >
                         <UserRepos
                             label={user.login}
                             imageUrl={user.avatar_url}

@@ -7,7 +7,7 @@ export default function SearchResultInfo() {
 
     return (
         <div className="px-3 pt-2">
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-500 dark:text-gray-400">
                 Showing users for "{searchParams.get('q')}"
             </span>
         </div>

@@ -18,19 +18,21 @@ export default function UserRepos({
                 onClick={() => setOpen(!open)}
             >
                 <img
-                    className="w-5 h-5 object-cover rounded-full bg-slate-200"
+                    className="w-5 h-5 object-cover rounded-full bg-slate-200 dark:bg-slate-700"
                     src={imageUrl}
                 />
-                <span className="grow text-left text-sm font-medium text-gray-700">
+                <span className="grow text-left text-sm font-medium text-gray-700 dark:text-gray-300">
                     {label}
                 </span>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    strokeWidth={1.5}
+                    strokeWidth={3}
                     stroke="currentColor"
-                    className={`w-4 h-4 ${open ? 'rotate-180' : 'rotate-0'}`}
+                    className={`w-4 h-4 ${
+                        open ? 'rotate-180' : 'rotate-0'
+                    } dark:text-gray-200`}
                 >
                     <path
                         strokeLinecap="round"

@@ -1,6 +1,6 @@
 export default function ErrorState({ label }: { label: string }) {
     return (
-        <div className="p-3 flex w-full items-center justify-center text-red-600">
+        <div className="p-3 flex w-full items-center justify-center text-red-600 dark:text-red-400">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

@@ -10,8 +10,8 @@ export default function SearchBox() {
     }
 
     return (
-        <div className="w-full p-3 border-b border-b-gray-300">
-            <div className="flex w-full border border-gray-300 mb-2 rounded p-2 text-gray-600 justify-center items-center gap-1">
+        <div className="w-full p-3 border-b border-b-gray-300 dark:border-b-gray-700">
+            <div className="flex w-full border border-gray-300 dark:border-gray-700 mb-2 rounded p-2 text-gray-600 dark:text-gray-200 justify-center items-center gap-1">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -27,7 +27,7 @@ export default function SearchBox() {
                     />
                 </svg>
                 <input
-                    className="w-full text-sm focus:outline-none"
+                    className="w-full text-sm focus:outline-none bg-transparent"
                     type="text"
                     placeholder="Type a username"
                     defaultValue={searchParams.get('q') || ''}
@@ -38,7 +38,7 @@ export default function SearchBox() {
                 />
             </div>
             <button
-                className="w-full bg-green-600 text-white p-2 rounded font-semibold text-sm"
+                className="w-full bg-green-600 text-gray-100 p-2 rounded font-semibold text-sm"
                 onClick={() => onClickSearch(searchText)}
             >
                 <span>Search</span>

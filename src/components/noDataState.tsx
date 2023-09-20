@@ -1,6 +1,6 @@
 export default function NoDataState({ label }: { label: string }) {
     return (
-        <div className="p-3 flex w-full items-center justify-center text-amber-500">
+        <div className="p-3 flex w-full items-center justify-center text-amber-500 dark:text-amber-300">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
