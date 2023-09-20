@@ -29,6 +29,7 @@ export default function SearchBox() {
                 <input
                     className="w-full text-sm focus:outline-none"
                     type="text"
+                    placeholder="Type a username"
                     defaultValue={searchParams.get('q') || ''}
                     onChange={(e) => setSearchText(e.target.value)}
                     onKeyDown={(e) =>
