@@ -18,7 +18,7 @@ function App() {
     return (
         // Provide the client to your App
         <QueryClientProvider client={queryClient}>
-            <div className="flex min-h-screen w-full justify-center bg-slate-100 py-10">
+            <div className="flex min-h-screen w-full justify-center bg-slate-100 py-3 px-3 sm:py-10">
                 <div className="bg-white max-w-lg w-full rounded-lg border border-gray-300">
                     <SearchBox />
                     <SearchResultInfo />
