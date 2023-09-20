@@ -27,7 +27,7 @@ export default function SearchBox() {
                     />
                 </svg>
                 <input
-                    className="w-full text-sm"
+                    className="w-full text-sm focus:outline-none"
                     type="text"
                     defaultValue={searchParams.get('q') || ''}
                     onChange={(e) => setSearchText(e.target.value)}

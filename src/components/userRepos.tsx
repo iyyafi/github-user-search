@@ -2,15 +2,25 @@ import { useState } from 'react'
 
 import UserRepo from './userRepo'
 
-export default function UserRepos({ label }: { label: string }) {
+export default function UserRepos({
+    label,
+    imageUrl,
+}: {
+    label: string
+    imageUrl: string
+}) {
     const [open, setOpen] = useState(false)
 
     return (
         <>
             <button
-                className="p-3 flex w-full items-center"
+                className="p-3 flex w-full items-center gap-2"
                 onClick={() => setOpen(!open)}
             >
+                <img
+                    className="w-5 h-5 object-cover rounded-full bg-slate-200"
+                    src={imageUrl}
+                />
                 <span className="grow text-left text-sm font-medium text-gray-700">
                     {label}
                 </span>

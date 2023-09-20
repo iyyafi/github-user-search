@@ -40,7 +40,10 @@ export default function SearchResults() {
             <div className="rounded-lg border border-gray-300 overflow-hidden">
                 {users.items?.map((user: UserItem) => (
                     <div key={user.id} className="border-b last:border-0">
-                        <UserRepos label={user.login} />
+                        <UserRepos
+                            label={user.login}
+                            imageUrl={user.avatar_url}
+                        />
                     </div>
                 ))}
             </div>
