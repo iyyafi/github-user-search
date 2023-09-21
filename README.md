@@ -1,27 +1,31 @@
-# React + TypeScript + Vite
+# GitHub User Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is a frontend web application that allows you to search for GitHub users and provides links to their respective repositories.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+-   **Vite for Quick Setup**: We've used Vite to set up this project, ensuring speed, minimal dependencies, and TypeScript support right from the start.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+-   **Data Fetching with Axios**: Axios is used to efficiently fetch data from the GitHub API, ensuring a smooth user experience.
 
-- Configure the top-level `parserOptions` property like this:
+-   **Data Caching and Loading State**: We've integrated React Query to cache data and manage loading states, improving the overall performance of the app.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+-   **Dynamic Routing with React Router**: React Router enables us to handle dynamic URL parameters, making it easy to navigate to specific user profiles.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+-   **Minimalist Styling with Tailwind CSS**: Tailwind CSS provides a minimalist and highly customizable styling solution, including support for dark mode, giving the app a sleek and modern look.
+
+## Getting Started
+
+Follow these steps to get the project up and running on your local machine:
+
+1. Clone the repository: `git clone https://github.com/iyyafi/github-user-search.git`
+
+2. Navigate to the project directory: `cd github-user-search`
+
+3. Install dependencies: `npm install`
+
+4. Start the development server: `npm run dev`
+
+5. Open your web browser and access the app at `http://localhost:3000`
