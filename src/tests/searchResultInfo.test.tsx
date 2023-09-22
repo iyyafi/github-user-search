@@ -1,19 +1,32 @@
-import { vi, describe, test, expect } from 'vitest'
+import { afterEach, vi, describe, test, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import SearchResultInfo from '../components/searchResultInfo'
 
+const { mockedMethod } = vi.hoisted(() => {
+    return { mockedMethod: vi.fn() }
+})
+
 vi.mock('react-router-dom', async () => {
-    const actual = await vi.importActual('react-router-dom')
     return {
-        ...(typeof actual === 'object' ? actual : {}),
-        useSearchParams: () => [new URLSearchParams({ q: '123' })],
+        useSearchParams: mockedMethod,
     }
 })
 
 describe('Search Result Info test', () => {
+    afterEach(() => {
+        vi.clearAllMocks()
+    })
+
+    test('expect return null', () => {
+        mockedMethod.mockReturnValue([new URLSearchParams({ q: '' })])
+        const { container } = render(<SearchResultInfo />)
+        expect(container.firstChild).toBeNull()
+    })
+
     test('expect return string', () => {
+        mockedMethod.mockReturnValue([new URLSearchParams({ q: 'test' })])
         render(<SearchResultInfo />)
-        expect(screen.getByText('Showing users for "123"')).toBeDefined()
+        expect(screen.getByText('Showing users for "test"')).toBeDefined()
     })
 })
