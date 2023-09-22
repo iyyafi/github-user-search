@@ -12,7 +12,7 @@ export default defineConfig({
         coverage: {
             enabled: true,
             reporter: ['text', 'json', 'html'],
-            provider: 'istanbul', // or 'v8'
+            provider: 'v8',
         },
     },
 })

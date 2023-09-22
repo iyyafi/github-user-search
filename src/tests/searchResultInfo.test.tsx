@@ -18,13 +18,13 @@ describe('Search Result Info Component', () => {
         vi.clearAllMocks()
     })
 
-    test('expect return null', () => {
+    test('Search Result Info with no search query', () => {
         mockedMethod.mockReturnValue([new URLSearchParams({ q: '' })])
         const { container } = render(<SearchResultInfo />)
         expect(container.firstChild).toBeNull()
     })
 
-    test('expect return string', () => {
+    test('Search Result Info with search query', () => {
         mockedMethod.mockReturnValue([new URLSearchParams({ q: 'test' })])
         render(<SearchResultInfo />)
         expect(screen.getByText('Showing users for "test"')).toBeDefined()
