@@ -13,7 +13,7 @@ vi.mock('react-router-dom', async () => {
     }
 })
 
-describe('Search Result Info test', () => {
+describe('Search Result Info Component', () => {
     afterEach(() => {
         vi.clearAllMocks()
     })
@@ -28,5 +28,8 @@ describe('Search Result Info test', () => {
         mockedMethod.mockReturnValue([new URLSearchParams({ q: 'test' })])
         render(<SearchResultInfo />)
         expect(screen.getByText('Showing users for "test"')).toBeDefined()
+        expect(screen.getByText('Showing users for "test"')).toBeTypeOf(
+            'object'
+        )
     })
 })
