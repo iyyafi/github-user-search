@@ -14,5 +14,6 @@ export default defineConfig({
             reporter: ['text', 'json', 'html'],
             provider: 'v8',
         },
+        setupFiles: ['src/tests/setup/setup.ts'],
     },
 })
