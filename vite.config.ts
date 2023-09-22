@@ -9,5 +9,10 @@ export default defineConfig({
     test: {
         globals: true,
         environment: 'jsdom',
+        coverage: {
+            enabled: true,
+            reporter: ['text', 'json', 'html'],
+            provider: 'istanbul', // or 'v8'
+        },
     },
 })
