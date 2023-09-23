@@ -1,4 +1,4 @@
-import { describe, test, expect, beforeEach, afterAll } from 'vitest'
+import { describe, test, expect, beforeEach, afterAll, beforeAll } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 
 import DarkToggle from '../components/darkToggle'
@@ -9,6 +9,10 @@ const darkText = 'Hello darkness my old friends'
 describe('Dark Toggle Component', () => {
     beforeEach(() => {
         render(<DarkToggle />)
+    })
+
+    beforeAll(() => {
+        localStorage.removeItem('theme')
     })
 
     afterAll(() => {
