@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import { RepoResult } from '../types/repoResult'
+import { RepoSchemaType, reposSchema } from '../types/repo-schema'
 import LoadingState from './loadingState'
 import ErrorState from './errorState'
 import NoDataState from './noDataState'
@@ -39,12 +39,18 @@ export default function UserRepo({ username }: { username: string }) {
         )
     }
 
+    const validateRepoSchema = reposSchema.safeParse(repos)
+    if (!validateRepoSchema.success) {
+        console.error(validateRepoSchema.error)
+        return
+    }
+
     return (
         <div className="p-3 bg-slate-50 dark:bg-slate-700 max-h-60 overflow-auto">
             {!repos.length ? (
                 <NoDataState label="No Repo Data" />
             ) : (
-                repos.map((repo: RepoResult) => (
+                repos.map((repo: RepoSchemaType) => (
                     <div key={repo.id} className="border-b last:border-0 py-2">
                         <Link
                             to={repo.html_url}

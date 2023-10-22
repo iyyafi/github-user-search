@@ -2,10 +2,10 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { useSearchParams } from 'react-router-dom'
 
-import { UserItem } from '../types/searchResult'
 import UserRepos from './userRepos'
 import LoadingState from './loadingState'
 import ErrorState from './errorState'
+import { UserItemSchemaType, userItemsSchema } from '../types/user-item-schema'
 
 export default function SearchResults() {
     const [searchParams] = useSearchParams()
@@ -35,10 +35,16 @@ export default function SearchResults() {
     if (isError) return <ErrorState label="Error Fetch User Data" />
     if (isFetching) return <LoadingState label="Loading User Data" />
 
-    return users.items?.length ? (
+    const validateUserItems = userItemsSchema.safeParse(users)
+    if (!validateUserItems.success) {
+        console.error(validateUserItems.error)
+        return
+    }
+
+    return (
         <div className="p-3">
             <div className="rounded-lg border border-gray-300 dark:border-gray-700 overflow-hidden">
-                {users.items?.map((user: UserItem) => (
+                {users.items.map((user: UserItemSchemaType) => (
                     <div
                         key={user.id}
                         className="border-b last:border-0 dark:border-b-slate-700"
@@ -51,5 +57,5 @@ export default function SearchResults() {
                 ))}
             </div>
         </div>
-    ) : null
+    )
 }
